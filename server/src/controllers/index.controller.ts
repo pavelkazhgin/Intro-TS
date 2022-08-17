@@ -30,8 +30,8 @@ export  const getBindById = async (req: Request, res: Response): Promise<Respons
 
 export  const createBind = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const { sum, course, currrency, email } = req.body;
-      const response: QueryResult = await pool.query('INSERT INTO bids (sum, course, currrency, email) VALUES ($1, $2, $3, $4)', [sum, course, currrency, email ]);
+    const { sum, course, currency, email } = req.body;
+      const response: QueryResult = await pool.query('INSERT INTO bids (sum, course, currency, email) VALUES ($1, $2, $3, $4)', [sum, course, currency, email ]);
       // console.log(responce.rows)
        return res.status(200).json({
         message: 'Bind created successfully',
@@ -39,7 +39,7 @@ export  const createBind = async (req: Request, res: Response): Promise<Response
           bind: {
             sum, 
             course,
-            currrency,
+            currency,
             email
           }
         }
@@ -53,8 +53,8 @@ export  const createBind = async (req: Request, res: Response): Promise<Response
 export  const updateBindById = async (req: Request, res: Response): Promise<Response> => {
   try {
     const id = parseInt(req.params.id);
-    const { sum, course, currrency, email } = req.body;
-    await pool.query('UPDATE bids SET sum = $1, course = $2, currrency = $3, email = $4 WHERE id = $5', [sum, course, currrency, email, id]);
+    const { sum, course, currency, email } = req.body;
+    await pool.query('UPDATE bids SET sum = $1, course = $2, currency = $3, email = $4 WHERE id = $5', [sum, course, currency, email, id]);
      return res.json(`Bind ${id} updated successfully`);
   } catch (error) {
     console.log(error);
