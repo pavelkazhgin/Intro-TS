@@ -31,7 +31,7 @@ export  const getBindById = async (req: Request, res: Response): Promise<Respons
 export  const createBind = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { sum, course, currrency, email } = req.body;
-      const response: QueryResult = await pool.query('INSERT INTO Bids (sum, course, currrency, email) VALUES ($1, $2, $3, $4)', [sum, course, currrency, email ]);
+      const response: QueryResult = await pool.query('INSERT INTO bids (sum, course, currrency, email) VALUES ($1, $2, $3, $4)', [sum, course, currrency, email ]);
       // console.log(responce.rows)
        return res.status(200).json({
         message: 'Bind created successfully',
